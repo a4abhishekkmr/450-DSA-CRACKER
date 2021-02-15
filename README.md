@@ -5,5 +5,5 @@
 
 #### 450 DSA Cracker doesn't guarantee a job but guarantees your confidence in solving any coding problem if done in the right way 👍🏻.
 
-#### More details on how [450dsa] can help you -><b><a href="https://www.450dsa.com">click here</a></b>
+#### you can visit the site from here(given by Love babbar) -><b><a href="https://www.450dsa.com">click here</a></b>
 <img src="site.jpg">
