@@ -15,11 +15,24 @@ Output: 1
 Output: 0
 
 
+Example:
+Input:
+2
+3 2
+1 2 1 3
+1 3 1 2
+3 2
+1 2 1 3
+1 2 1 3
+Output:
+1
+0
+
 
 class BinaryTree  
 { 
     // Return True if the given trees are isomotphic. Else return False.
-    boolean Mirror(Node root1, Node root2)  
+    boolean isIsomorphic(Node root1, Node root2)  
     { 
         if(root1==null && root2==null)
         {
@@ -35,7 +48,7 @@ class BinaryTree
             return false;
         }
         
-        return Mirror(root1.left,root2.right)&&isIsomorphic(root1.right,root2.left);
+        return isIsomorphic(root1.left,root2.right)&&isIsomorphic(root1.right,root2.left);
          // code here.
     }
     
