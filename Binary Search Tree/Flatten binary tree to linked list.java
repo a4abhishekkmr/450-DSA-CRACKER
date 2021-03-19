@@ -88,3 +88,46 @@ is 1 3 4 2 5.
             
         }
 }
+
+Finally Runned in Cpp
+due to some bugs in the problem with the compiler of java
+so same approach 1 in cpp
+SOlution is here
+>>
+class Solution
+{
+    public:
+    void flatten(Node *root)
+    {
+        //code here
+         if (root == NULL || root->left == NULL &&
+                        root->right == NULL) {
+        return;
+    }
+    //if root  ka left exists ten make it root ka right and add
+    if (root->left != NULL) {
+ 
+        // move left recursively
+        flatten(root->left);
+    
+        // store the node root->right
+        struct Node* tmpRight = root->right;
+        root->right = root->left;
+        root->left = NULL;
+ 
+        // find the position to insert
+        // the stored value   
+        struct Node* t = root->right;
+        while (t->right != NULL) {
+            t = t->right;
+        }
+           // insert the stored value
+        t->right = tmpRight;
+    }
+ 
+    // now call the same function
+    // for root->right
+    flatten(root->right);
+}
+
+};
