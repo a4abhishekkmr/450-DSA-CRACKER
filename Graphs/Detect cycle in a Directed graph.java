@@ -5,10 +5,10 @@ Given a Directed Graph with V vertices and E edges, check whether it contains an
 Input:
 
 0----------->1
-                      |
-                      v
-3-------------2
-v
+             |
+             v
+3<-----------2
+U
 
 Output: 1
 Explanation: 3 -> 3 is a cycle
