@@ -12,12 +12,11 @@ Output: 32
 Explanation: 
 The absolute value of -32 is 32.
 
-
 class Solution {
     public int absolute(int I) {
         // code here
         return Math.abs(I);
     }
 }
-Time Complexity: O(1)
-Auxiliary Space : O(1)
+Time complexity-O(1)
+space-O(1)
