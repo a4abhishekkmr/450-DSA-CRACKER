@@ -58,3 +58,31 @@ class Solution{
 }
 Expected Time Complexity: O(N1 * M1 * M2)
 Expected Auxiliary Space: O(N1 * M2) for resultant matrix. 
+
+
+
+ArrayList<Integer> al=new ArrayList<Integer>();
+PriorityQueue<Integer> q=new PriorityQueue<>(Collections.reverseOrder());
+//created a priority queue that contains elements of size k of descending order
+for(int i=0;i<k;i++)
+q.add(arr[i]);
+
+//added elements of size k in q in descending
+//we created a max heap
+//if we remove the first element it will be max
+al.add(q.peek());
+//remove the element which is out of window if we move window further.
+q.remove(arr[0]);
+
+//now needed to move the window so we will start adding element from k as upto k added and remove one
+for(int i=k;i<n;i++)
+{
+    q.add(arr[i]);
+    al.add(q.peek());
+    q.remove(arr[i-k+1]);
+}
+return al;
+}
+}
+// time complexity=O(n)
+// space complexity=O(k)
