@@ -1,0 +1,48 @@
+The cost of stock on each day is given in an array A[] of size N. Find all the days on which you buy and sell the stock so that in between those days your profit is maximum.
+Note: There may be multiple possible solutions. Return any one of them.
+
+Example 1:
+
+Input:
+N = 7
+A[] = {100,180,260,310,40,535,695}
+Output:
+1
+Explanation:
+One possible solution is (0 3) (4 6)
+We can buy stock on day 0,
+and sell it on 3rd day, which will 
+give us maximum profit. Now, we buy 
+stock on day 4 and sell it on day 6.
+
+
+
+Your Task:
+The task is to complete the function stockBuySell() which takes an array A[] and N as input parameters and finds the days of buying and selling stock. The function must return a 2D list of integers containing all the buy-sell pairs. If there is No Profit, return an empty list. The driver code will return 1 if your answer is correct, otherwise, it will return 0. In case there's no profit the driver code will return the string "No Profit" for a correct solution.
+
+
+
+//User function Template for Java
+
+class Solution{
+    //Function to find the days of buying and selling stock for max profit.
+    ArrayList<ArrayList<Integer> > stockBuySell(int A[], int n) {
+        // code here
+        ArrayList<ArrayList<Integer> > al= new ArrayList<ArrayList<Integer> >();
+        for(int i=1;i<n;i++)
+        {
+            if(A[i]>A[i-1])
+            {
+            ArrayList<Integer> list= new ArrayList<Integer>();
+            list.add(i-1);
+            list.add(i);
+            al.add(list);
+            }
+        }
+        return al;
+    }
+}
+
+Expected Time Complexity: O(N)
+Expected Auxiliary Space: O(N)
+
