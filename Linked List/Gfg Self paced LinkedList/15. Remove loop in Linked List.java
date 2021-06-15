@@ -33,8 +33,7 @@ class Solution
         // code here
         // remove the loop without losing any nodes
         //Use floyd cycle to detect loop
-        Node slow=head, fast=head,fast1=head;
-        //for circular LL
+        Node slow=head, fast=head;
         
         boolean loop=false;
         while(fast!=null && fast.next!=null)
