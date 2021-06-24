@@ -52,6 +52,10 @@ class Solution
             mset[u]=true;
             res+=key[u];
             for(ArrayList<Integer>ab : adj.get(u))
+            //for next line (ab.get(0))!=0
+            //here i should removed the not connected part as in Al of al of al it 
+             //is not like graph where redundant data(0) is stored.. so in al no unecessary data is stored no needed to check
+             //for not connected it wont be given
             if(mset[ab.get(0)]==false && (ab.get(0))!=0 && ab.get(1)<key[ab.get(0)] )//Not connected by path
             key[ab.get(0)]=ab.get(1);
             //updated to the lower value
@@ -59,4 +63,4 @@ class Solution
         return res;
     }
 }
-//TC=>O(v*v + v*(v+E))  //SC-O(v*x)
+//TC=>O(v*v + v*(v+E))  //SC-O(v*something)
