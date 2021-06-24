@@ -1,0 +1,62 @@
+Given a weighted, undirected and connected graph of V vertices and E edges. The task is to find the sum of weights of the edges of the Minimum Spanning Tree.
+
+ 
+
+Example 1:
+
+Input:
+Input Format:
+
+First line of the custom input must contain two space separated integers V denoting the number of vertices and E denoting the number of edges. Next E lines contains three space-separated integers denoting each edge and weight between the edges
+
+Example:
+
+3 3
+0 1 5
+1 2 3
+0 2 1
+Output:
+4
+Explanation:
+
+The Spanning Tree resulting in a weight
+of 4 is shown above.
+
+
+
+// User function Template for Java
+
+class Solution
+{
+    //Function to find sum of weights of edges of the Minimum Spanning Tree.
+    static int spanningTree(int V, ArrayList<ArrayList<ArrayList<Integer>>> adj) 
+    {
+        // Add your code here
+        //i will use prim's algo to find the minimum spanning tree
+        
+        // so my result will be stored in a key matrix and final ans will be given from thst
+        int key[]= new int[V];
+        int res=0;
+        Arrays.fill(key, Integer.MAX_VALUE);
+        key[0]=0;//Key initially 0,INF,INF,....
+        boolean mset[]=new boolean[V];
+        // this is a mset that tells nodes are joined and converted to one part and so on
+        for(int count=0;count<V;count++)
+        {//V times
+            int u=-1;//resets every time loop starts
+            for(int i=0;i<V;i++)
+            {//choose vertex (min) which is not present in MST
+                if(!mset[i] && (u==-1 || key[i]<key[u]))
+                u=i;
+            }
+            mset[u]=true;
+            res+=key[u];
+            for(ArrayList<Integer>ab : adj.get(u))
+            if(mset[ab.get(0)]==false && (ab.get(0))!=0 && ab.get(1)<key[ab.get(0)] )//Not connected by path
+            key[ab.get(0)]=ab.get(1);
+            //updated to the lower value
+        }
+        return res;
+    }
+}
+//TC=>O(v*v + v*(v+E))  //SC-O(v*x)
