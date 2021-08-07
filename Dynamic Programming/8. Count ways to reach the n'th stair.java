@@ -29,6 +29,8 @@ class Solution
         // your code here
         
        //it is based on problem of getting dp[n]=dp[n-1]+dp[n-2];
+        //In this problem order  matters
+        //means 1 2 1 can be used as 2 1 1 also as 1 1 2
        int mod=1000000007;
        int a=1;
        int b=2;
