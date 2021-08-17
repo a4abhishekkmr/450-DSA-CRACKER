@@ -1,0 +1,88 @@
+
+class Solution
+{
+    //Function to return nCr mod 10^9+7 for given n and r.
+    
+    
+//     C(n, k) 
+// = n! / (n-k)! * k!
+// = [n * (n-1) *....* 1]  / [ ( (n-k) * (n-k-1) * .... * 1) * 
+//                             ( k * (k-1) * .... * 1 ) ]
+// After simplifying, we get
+// C(n, k) 
+// = [n * (n-1) * .... * (n-k+1)] / [k * (k-1) * .... * 1]
+
+// Also, C(n, k) = C(n, n-k)  
+// // r can be changed to n-r if r > n-r 
+ 
+
+// Change r to n-r if r is greater than n-r. and create a variable to store the answer.
+// Run a loop from 0 to r-1
+// In every iteration update ans as (ans*(n-i))/(i+1) where i is the loop counter.
+// So the answer will be equal to ((n/1)*((n-1)/2)*…*((n-r+1)/r!) which is equal to nCr.
+
+
+
+    static int mod=1000000007;
+    public static int nCrModp(int n, int r)
+    {
+        // your code here
+        //this is for smaller number in test cases
+        if(n<r) return 0;
+        if(n==r) return 1;
+        
+        // if(n>r) r=n-r;
+        
+        // int ans=1;
+        
+        // for(int i=0;i<r;i++)
+        // {
+        //      ans=(ans*(n-i));
+        //      ans=ans/(i+1);
+        //     //ans=(ans*(n-i))/(i+1);
+        // }
+        
+        // return ans;
+//       Explanation: 
+// 1==========>> n = 0, C(0,0) = 1 
+// 1–1========>> n = 1, C(1,0) = 1, C(1,1) = 1 
+// 1–2–1======>> n = 2, C(2,0) = 1, C(2,1) = 2, C(2,2) = 1 
+// 1–3–3–1====>> n = 3, C(3,0) = 1, C(3,1) = 3, C(3,2) = 3, C(3,3)=1 
+// 1–4–6–4–1==>> n = 4, C(4,0) = 1, C(4,1) = 4, C(4,2) = 6, C(4,3)=4, C(4,4)=1 
+// So here every loop on i, builds i’th row of pascal triangle, using (i-1)th row
+// At any time, every element of array C will have some value (ZERO or more) and in next iteration, value for those elements comes from previous iteration. 
+// In statement, 
+// C[j] = C[j] + C[j-1] 
+// The right-hand side represents the value coming from the previous iteration (A row of Pascal’s triangle depends on the previous row). The left-Hand side represents the value of the current iteration which will be obtained by this statement. 
+//    
+//   int C[][] = new int[n + 1][k + 1];
+//         int i, j;
+ 
+//         // Calculate  value of Binomial
+//         // Coefficient in bottom up manner
+//         for (i = 0; i <= n; i++) {
+//             for (j = 0; j <= min(i, k); j++) {
+//                 // Base Cases
+//                 if (j == 0 || j == i)
+//                     C[i][j] = 1;
+ 
+//                 // Calculate value using
+//                 // previously stored values
+//                 else
+//                     C[i][j] = C[i - 1][j - 1] + C[i - 1][j];
+//             }
+//         }
+ 
+//         return C[n][k];
+        int C[]=new int[r+1];
+        C[0]=1;
+        
+        for(int i=1;i<=n;i++)
+        {
+            for(int j=Math.min(i,r);j>0;j--)
+            C[j]=(C[j-1]%mod+C[j]%mod)%mod;
+        }
+        return C[r]%mod;
+    }
+}
+
